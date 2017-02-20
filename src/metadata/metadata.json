@@ -1,9 +1,9 @@
 {
-  "package": "Newton",
-  "tagline": "Newton does anything from numerical calculation to symbolic math parsing.",
-  "description": "Newton does anything from numerical calculation to symbolic math parsing.",
-  "image": "https://logo.clearbit.com/newton.now.sh?s=128",
-  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Newton-package",
+  "package": "iTunes",
+  "tagline": "The iTunes Search API allows you to place search fields in your website to search for content within the iTunes Store, App Store, iBooks Store and Mac App Store.",
+  "description": "The iTunes Search API allows you to place search fields in your website to search for content within the iTunes Store, App Store, iBooks Store and Mac App Store.",
+  "image": "https://logo.clearbit.com/apple.com?s=128",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-iTunes-package",
   "keywords": [
     "API",
     "math",
