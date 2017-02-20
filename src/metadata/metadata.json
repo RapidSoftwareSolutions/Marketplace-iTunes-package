@@ -1,0 +1,348 @@
+{
+  "package": "Newton",
+  "tagline": "Newton does anything from numerical calculation to symbolic math parsing.",
+  "description": "Newton does anything from numerical calculation to symbolic math parsing.",
+  "image": "https://logo.clearbit.com/newton.now.sh?s=128",
+  "repo": "https://github.com/RapidSoftwareSolutions/Marketplace-Newton-package",
+  "keywords": [
+    "API",
+    "math",
+    "Newton"
+  ],
+  "accounts": {
+    "domain": "newton.now.sh",
+    "credentials": []
+  },
+  "blocks": [
+    {
+      "name": "simplifyExpression",
+      "description": "Simplify expression",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 2^2+2(2), result: 8",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "factoringExpression",
+      "description": "Factoring expression",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: x^2 + 2x, result: x (x + 2)",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "findDerivative",
+      "description": "Find derivative",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: 2 x + 2",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "integrateExpression",
+      "description": "Integrate expression",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: 1/3 x^3 + x^2 + C",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "findZeros",
+      "description": "Finding zeros",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: [-2, 0]",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "findTangent",
+      "description": "Finding tangent",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 2|x^3, result: 12 x + -16",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAreaUnderCurve",
+      "description": "Get area under curve",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 2:4|x^3, result: 60",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getCosine",
+      "description": "Get cosine",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: pi, result: -1",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getSine",
+      "description": "Get sine",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTangent",
+      "description": "Get tangent",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getInverseCosine",
+      "description": "Get inverse cosine",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 1, result: 0",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getInverseSine",
+      "description": "Get inverse sine",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getInverseTangent",
+      "description": "Get inverse tangent",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getAbsoluteValue",
+      "description": "Get absolute value",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: -1, result: 1",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getLogarithm",
+      "description": "Get logarithm",
+      "args": [
+        {
+          "name": "expression",
+          "type": "String",
+          "info": "Url-encoded math expression on which you want to operate. Expression examlpe: 2|8, result: 3",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}

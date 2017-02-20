@@ -1,0 +1,10 @@
+/src/metadata/conf*
+/vendor/
+test/rapid.*
+test/*.json
+test/*.ods
+test/*.ods#
+test/*.php
+test/*.txt
+test/*
+.idea/

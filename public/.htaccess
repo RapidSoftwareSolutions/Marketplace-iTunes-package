@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+ErrorDocument 404 /
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.php [QSA,L]
+
+</IfModule>
+
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag html_errors on
+php_flag  log_errors on
+
