@@ -1,31 +1,48 @@
 <?php
 return array (
-    'package' => 'Newton',
-    'tagline' => 'Newton does anything from numerical calculation to symbolic math parsing.',
-    'description' => 'Newton does anything from numerical calculation to symbolic math parsing.',
-    'image' => 'https://logo.clearbit.com/newton.now.sh?s=128',
-    'repo' => 'https://github.com/RapidSoftwareSolutions/Marketplace-Newton-package',
+    'package' => 'iTunes',
+    'tagline' => 'The iTunes Search API allows you to place search fields in your website to search for content within the iTunes Store, App Store, iBooks Store and Mac App Store.',
+    'description' => 'The iTunes Search API allows you to place search fields in your website to search for content within the iTunes Store, App Store, iBooks Store and Mac App Store.',
+    'image' => 'https://logo.clearbit.com/apple.com?s=128',
+    'repo' => 'https://github.com/RapidSoftwareSolutions/Marketplace-iTunes-package',
     'keywords' => array (
         'API',
-        'math',
-        'Newton',
+        'media',
+        'iTunes',
     ),
     'accounts' => array (
-        'domain' => 'newton.now.sh',
-        'credentials' => array (
-        ),
+        'domain' => 'apple.com/itunes',
+        'credentials' => array (),
     ),
     'blocks' => array (
         array (
-            'name' => 'simplifyExpression',
-            'description' => 'Simplify expression',
+            'name' => 'search',
+            'description' => 'Search for content within the iTunes Store, App Store, iBooks Store and Mac App Store.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 2^2+2(2), result: 8',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -39,15 +56,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'factoringExpression',
-            'description' => 'Factoring expression',
+            'name' => 'searchMovies',
+            'description' => 'Search in movies.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: x^2 + 2x, result: x (x + 2)',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of movieArtist, movie.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of actorTerm, genreIndex, artistTerm, shortFilmTerm, producerTerm, ratingTerm, directorTerm, releaseYearTerm, featureFilmTerm, movieArtistTerm, movieTerm, ratingIndex, descriptionTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -61,15 +108,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'findDerivative',
-            'description' => 'Find derivative',
+            'name' => 'searchPodcasts',
+            'description' => 'Search in podcasts.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: 2 x + 2',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of podcastAuthor, podcast.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of titleTerm, languageTerm, authorTerm, genreIndex, artistTerm, ratingIndex, keywordsTerm, descriptionTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -83,15 +160,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'integrateExpression',
-            'description' => 'Integrate expression',
+            'name' => 'searchMusic',
+            'description' => 'Search in music.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: 1/3 x^3 + x^2 + C',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of musicArtist, musicTrack, album, musicVideo, mix, song.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of mixTerm, genreIndex, artistTerm, composerTerm, albumTerm, ratingIndex, songTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -105,15 +212,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'findZeros',
-            'description' => 'Finding zeros',
+            'name' => 'searchMusicVideos',
+            'description' => 'Search music and videos content.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: x^2+2x, result: [-2, 0]',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of musicArtist, musicVideo.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of genreIndex, artistTerm, albumTerm, ratingIndex, songTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -127,15 +264,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'findTangent',
-            'description' => 'Finding tangent',
+            'name' => 'searchAudiobooks',
+            'description' => 'Search in audiobooks.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 2|x^3, result: 12 x + -16',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of audiobookAuthor, audiobook.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of titleTerm, authorTerm, genreIndex, ratingIndex.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -149,15 +316,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'getAreaUnderCurve',
-            'description' => 'Get area under curve',
+            'name' => 'searchShortFilms',
+            'description' => 'Search in short films.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 2:4|x^3, result: 60',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of shortFilmArtist, shortFilm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of genreIndex, artistTerm, shortFilmTerm, ratingIndex, descriptionTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -171,15 +368,45 @@ return array (
             ),
         ),
         array (
-            'name' => 'getCosine',
-            'description' => 'Get cosine',
+            'name' => 'searchTvShows',
+            'description' => 'Search in TV shows.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: pi, result: -1',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of tvEpisode, tvSeason.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, one of genreIndex, tvEpisodeTerm, showTerm, tvSeasonTerm, ratingIndex, descriptionTerm.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -193,15 +420,39 @@ return array (
             ),
         ),
         array (
-            'name' => 'getSine',
-            'description' => 'Get sine',
+            'name' => 'searchSoftwares',
+            'description' => 'Search in softwares.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, one of software, iPadSoftware, macSoftware.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -215,15 +466,33 @@ return array (
             ),
         ),
         array (
-            'name' => 'getTangent',
-            'description' => 'Get tangent',
+            'name' => 'searchEbooks',
+            'description' => 'Search in ebooks.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'term',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0',
+                    'info' => 'The text string you want to search for.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -237,15 +506,57 @@ return array (
             ),
         ),
         array (
-            'name' => 'getInverseCosine',
-            'description' => 'Get inverse cosine',
+            'name' => 'getContentById',
+            'description' => 'Look up content by iTunes ID.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'contentId',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 1, result: 0',
+                    'info' => 'Id of content for Retrieving.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -259,15 +570,57 @@ return array (
             ),
         ),
         array (
-            'name' => 'getInverseSine',
-            'description' => 'Get inverse sine',
+            'name' => 'getContentByUpc',
+            'description' => 'Look up an album or video by its UPC.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'upc',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0',
+                    'info' => 'UPC of album or video.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -281,15 +634,57 @@ return array (
             ),
         ),
         array (
-            'name' => 'getInverseTangent',
-            'description' => 'Get inverse tangent',
+            'name' => 'getContentByIsbn',
+            'description' => 'Look up content by ISBN.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'isbn',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 0, result: 0',
+                    'info' => 'International standard book number.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -303,15 +698,57 @@ return array (
             ),
         ),
         array (
-            'name' => 'getAbsoluteValue',
-            'description' => 'Get absolute value',
+            'name' => 'getContentByAmgAlbumId',
+            'description' => 'Look up an album by its AMG Album ID',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'amgAlbumId',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: -1, result: 1',
+                    'info' => 'AMG Album identifier or comma separated Ids.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -325,15 +762,121 @@ return array (
             ),
         ),
         array (
-            'name' => 'getLogarithm',
-            'description' => 'Get logarithm',
+            'name' => 'getContentByAmgArtistId',
+            'description' => 'Look up content by AMG artist ID.',
             'args' => array (
                 array (
-                    'name' => 'expression',
+                    'name' => 'amgArtistId',
                     'type' => 'String',
-                    'info' => 'Url-encoded math expression on which you want to operate. Expression examlpe: 2|8, result: 3',
+                    'info' => 'AMG Artist Id or comma separated Ids.',
                     'required' => true,
                 ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
+            ),
+            'callbacks' => array (
+                array (
+                    'name' => 'error',
+                    'info' => 'Error',
+                ),
+                array (
+                    'name' => 'success',
+                    'info' => 'Success',
+                ),
+            ),
+        ),
+        array (
+            'name' => 'getContentByAmgVideoId',
+            'description' => 'Look up content by AMG Video ID.',
+            'args' => array (
+                array (
+                    'name' => 'amgVideoId',
+                    'type' => 'String',
+                    'info' => 'AMG Video identire.',
+                    'required' => true,
+                ),
+                array (
+                    'name' => 'term',
+                    'type' => 'String',
+                    'info' => 'The text string you want to search for.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'country',
+                    'type' => 'String',
+                    'info' => 'The two-letter country code for the store you want to search.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'media',
+                    'type' => 'String',
+                    'info' => 'The media type you want to search for. The default is all.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'entity',
+                    'type' => 'String',
+                    'info' => 'The type of results you want returned, relative to the specified media type. For example: movieArtist for a movie media type search. The default is the track entity associated with the specified media type.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'attribute',
+                    'type' => 'String',
+                    'info' => 'The attribute you want to search for in the stores, relative to the specified media type. For example, if you want to search for an artist by name specify entity=allArtist&attribute=allArtistTerm. In this example, if you search for term=maroon, iTunes returns “Maroon 5” in the search results, instead of all artists who have ever recorded a song with the word "maroon" in the title.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'limit',
+                    'type' => 'Number',
+                    'info' => 'The number of search results you want the iTunes Store to return. In range 1 - 200.The default is 50.',
+                    'required' => false,
+                ),
+                array (
+                    'name' => 'lang',
+                    'type' => 'String',
+                    'info' => 'The language, English or Japanese, you want to use when returning search results. Specify the language using the five-letter codename. The default is en_us (English).',
+                    'required' => false,
+                )
             ),
             'callbacks' => array (
                 array (
@@ -348,109 +891,235 @@ return array (
         ),
     ),
     'custom' => array (
-        'simplifyExpression' => array (
+        'search' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'term' => 'term',
+                'country' => 'country',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/simplify/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'all',
+            ),
+        ),
+        'searchMovies' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'movie',
+            ),
+        ),
+        'searchPodcasts' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'podcast',
+            ),
+        ),
+        'searchMusic' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'music',
+            ),
+        ),
+        'searchMusicVideos' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'musicVideo',
+            ),
+        ),
+        'searchAudiobooks' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'audiobook',
+            ),
+        ),
+        'searchShortFilms' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'shortFilm',
+            ),
+        ),
+        'searchTvShows' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'tvShow',
+            ),
+        ),
+        'searchSoftwares' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'entity' => 'entity',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'software',
+                'attribute' => 'softwareDeveloper',
+            ),
+        ),
+        'searchEbooks' => array (
+            'dictionary' => array (
+                'term' => 'term',
+                'country' => 'country',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/search',
+            'method' => 'GET',
+            'default' => array (
+                'media' => 'ebook',
+                'entity' => 'ebook',
+            ),
+        ),
+        'getContentById' => array (
+            'dictionary' => array (
+                'contentId' => 'id',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
+            ),
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
-        'factoringExpression' => array (
+        'getContentByUpc' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'upc' => 'upc',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/factor/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
-        'findDerivative' => array (
+        'getContentByIsbn' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'isbn' => 'isbn',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/derive/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
-        'integrateExpression' => array (
+        'getContentByAmgAlbumId' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'amgAlbumId' => 'amgAlbumId',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/integrate/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
-        'findZeros' => array (
+        'getContentByAmgArtistId' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'amgArtistId' => 'amgArtistId',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/zeroes/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
-        'findTangent' => array (
+        'getContentByAmgVideoId' => array (
             'dictionary' => array (
-                'expression' => 'expression',
+                'amgVideoId' => 'amgVideoId',
+                'term' => 'term',
+                'country' => 'country',
+                'media' => 'media',
+                'entity' => 'entity',
+                'attribute' => 'attribute',
+                'limit' => 'limit',
+                'lang' => 'lang',
             ),
-            'vendorUrl' => 'https://newton.now.sh/tangent/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getAreaUnderCurve' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/area/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getCosine' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/cos/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getSine' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/sin/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getTangent' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/tan/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getInverseCosine' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/arccos/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getInverseSine' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/arcsin/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getInverseTangent' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/arctan/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getAbsoluteValue' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/abs/{{expression}}',
-            'method' => 'GET',
-        ),
-        'getLogarithm' => array (
-            'dictionary' => array (
-                'expression' => 'expression',
-            ),
-            'vendorUrl' => 'https://newton.now.sh/log/{{expression}}',
+            'vendorUrl' => 'https://itunes.apple.com/lookup',
             'method' => 'GET',
         ),
     ),

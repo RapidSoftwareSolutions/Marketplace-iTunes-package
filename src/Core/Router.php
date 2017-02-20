@@ -125,14 +125,11 @@ class Router
 
             // Prepare param
             $sendParam = $this->prepareParam($inputPram, $blockCustom['dictionary'], $blockName);
-            // remove accessToken from param list, for sent as header
-            $accessToken = '';
-            if(isset($sendParam['accessToken'])){
-                $accessToken = $sendParam['accessToken'];
-                unset($sendParam['accessToken']);
-            }
-            $appClientId = (isset($sendParam['appClientId']))?$sendParam['appClientId']:'';
             $sendBody = $sendParam;
+            // If need, custom make custom default processing
+            if(isset($blockCustom['default'])&&is_array($blockCustom['default'])&&count($blockCustom['default'])>0){
+                $sendBody = array_merge($blockCustom['default'], $sendBody);
+            }
             // If need, custom make custom processing for route
             if(isset($blockCustom['custom'])&&$blockCustom['custom'] == true){
                 $sendBody = CustomModel::$blockName($sendParam, $this->custom[$blockName], $vendorUrl);
@@ -145,10 +142,11 @@ class Router
             }
 
             // Make request
-            $result = $this->httpRequest($vendorUrl, $method, $accessToken, $appClientId, $sendBody);
+            $result = $this->httpRequest($vendorUrl, $method, $sendBody);
             echo json_encode($result);
             exit(200);
         });
+
         return true;
     }
 
@@ -167,6 +165,7 @@ class Router
             }
             array_push($param, $oneParam['name']);
         }
+
         return [
             'param' => $param,
             'required' => $required,
@@ -176,6 +175,7 @@ class Router
 
     private function getInputPram($paramList)
     {
+        // Retrieve data params from input body
         $requestBody = file_get_contents('php://input');
         if(strlen($requestBody)>0){
             $requestBody = $this->normalizeJson($requestBody);
@@ -186,10 +186,12 @@ class Router
                 $response['callback'] = 'error';
                 $response['contextWrites']['to']['status_code'] = 'JSON_VALIDATION';
                 $response['contextWrites']['to']['status_msg'] = "Syntax error. Incorrect input JSON. Please, check fields withJSON input. " . json_last_error_msg();
+
                 return json_encode($response);
             }
             $jsonParam = $requestBody['args'];
             $param = [];
+            // Check input param in param list
             foreach($paramList as $oneParam){
                 $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:false;
             }
@@ -202,10 +204,11 @@ class Router
 
     protected function validateParam($inputParam, $requiredPram = [], $jsonParams = [])
     {
+        // Check Required params
         if(count($requiredPram)>0){
             $requiredPramCheck = [];
             foreach($requiredPram as $oneParam){
-                if(!isset($inputParam[$oneParam]) || $inputParam[$oneParam] === false){
+                if(!isset($inputParam[$oneParam]) || $inputParam[$oneParam] === false || $inputParam[$oneParam] === ''){
                     array_push($requiredPramCheck, $oneParam);
                 }
             }
@@ -219,6 +222,7 @@ class Router
                 return json_encode($response);
             }
         }
+        // Check JSON params
         if(count($jsonParams)>0){
             $jsonParamsCheck = [];
             foreach($jsonParams as $oneParam){
@@ -246,27 +250,26 @@ class Router
     {
         $result = [];
         foreach($inputParam as $paramName => $paramVal){
+            // Convert numeric in Numeric type
             if(is_numeric($paramVal)){
                 $paramVal = intval($paramVal);
             }
-            if($paramName=='expression'&&$paramVal!='0'){
-                $paramVal = urlencode($paramVal);
+            // Substitution using dictionary
+            $finalParamName = $paramName;
+            if(count($dictionary)>0 && $paramVal != false && isset($dictionary[$paramName])) {
+                $finalParamName = $dictionary[$paramName];
             }
-            if(count($dictionary)>0) {
-                if ($paramVal != false && isset($dictionary[$paramName])) {
-                    $result[$dictionary[$paramName]] = $paramVal;
-                }
-            }else{
-                if ($paramVal != false) {
-                    $result[$paramName] = $paramVal;
-                }
+            $result[$finalParamName] = $paramVal;
+            // URL encode term field
+            if($paramName == 'term'){
+                $result[$finalParamName] = urlencode($paramVal);
             }
         }
 
         return $result;
     }
 
-    protected function httpRequest($url, $method, $accessToken, $appClientId, $sendBody)
+    protected function httpRequest($url, $method, $sendBody)
     {
         if($sendBody == '[]' || $sendBody == '{}'){
             $sendBody = '';
@@ -277,17 +280,10 @@ class Router
             // Setup client
             $clientSetup = [
                 'headers' => [
-                    'Content-Type' => 'application/x-www-form-urlencoded',
+                    'Content-Type' => 'application/json',
                 ] ];
 
-            $clientSetup['headers']['Authorization'] = 'Bearer ' . $accessToken;
-            $clientSetup['headers']['User-Agent'] = 'RapidAPI-' . $appClientId;
-
-            if($method == 'GET'){
-                $clientSetup['query'] = json_decode($sendBody, true);
-            }else{
-                $clientSetup['form_params'] = json_decode($sendBody, true);
-            }
+            $clientSetup['query'] = json_decode($sendBody, true);
 
             $vendorResponse = $this->http->request($method, $url, $clientSetup);
             $responseBody = $vendorResponse->getBody()->getContents();
