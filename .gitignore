@@ -8,3 +8,4 @@ test/*.php
 test/*.txt
 test/*
 .idea/
+composer.lock
