@@ -190,13 +190,13 @@ class Router
                 return json_encode($response);
             }
             $jsonParam = $requestBody['args'];
-            $param = [];
+//            $param = [];
             // Check input param in param list
-            foreach($paramList as $oneParam){
-                $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:false;
-            }
+//            foreach($paramList as $oneParam) {
+//                $param[$oneParam] = (isset($jsonParam[$oneParam]))?$jsonParam[$oneParam]:false;
+//            }
 
-            return $param;
+            return $jsonParam;
         }else{
             return [];
         }
