@@ -1322,7 +1322,12 @@
             "args": [
                 {
                     "name": "amgAlbumId",
-                    "type": "String",
+                    "type": "List",
+                    "structure":{
+                        "name": "amgAlbumId",
+                        "type": "String",
+                        "info": "Single amgAlbumId"
+                    },
                     "info": "AMG Album identifier or comma separated Ids.",
                     "required": true
                 },
@@ -1476,8 +1481,13 @@
             "args": [
                 {
                     "name": "amgArtistId",
-                    "type": "String",
-                    "info": "AMG Artist Id or comma separated Ids.",
+                    "type": "List",
+                    "structure":{
+                        "name": "amgArtistId",
+                        "type": "String",
+                        "info": "Single amgArtistId"
+                    },
+                    "info": "Array of AMG Artist Id",
                     "required": true
                 },
                 {
@@ -1630,8 +1640,13 @@
             "args": [
                 {
                     "name": "amgVideoId",
-                    "type": "String",
-                    "info": "AMG Video identire.",
+                    "type": "List",
+                    "structure":{
+                        "name": "amgVideoId",
+                        "type": "String",
+                        "info": "Single amgVideoId"
+                    },
+                    "info": "Array of AMG Video ids",
                     "required": true
                 },
                 {

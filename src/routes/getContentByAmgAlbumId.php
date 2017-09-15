@@ -24,7 +24,7 @@ $app->post('/api/iTunes/getContentByAmgAlbumId', function ($request, $response) 
 
     $client = $this->httpClient;
     $query_str = "https://itunes.apple.com/lookup";
-
+    $data['amgAlbumId'] = is_array($data['amgAlbumId']) ? implode(',', $data['amgAlbumId']) : $data['amgAlbumId'];
     
 
     $requestParams = \Models\Params::createRequestBody($data, $bodyParams);

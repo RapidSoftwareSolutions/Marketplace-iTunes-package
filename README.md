@@ -176,7 +176,7 @@ Look up an album by its AMG Album ID
 
 | Field     | Type  | Description
 |-----------|-------|----------
-| amgAlbumId| String| AMG Album identifier or comma separated Ids.
+| amgAlbumId| List| AMG Album identifier or comma separated Ids.
 | term      | String| The text string you want to search for.
 | country   | String| The two-letter country code for the store you want to search.
 | media     | Select| The media type you want to search for. The default is all.
@@ -190,7 +190,7 @@ Look up content by AMG artist ID.
 
 | Field      | Type  | Description
 |------------|-------|----------
-| amgArtistId| String| AMG Artist Id or comma separated Ids.
+| amgArtistId| List| AMG Artist Id or comma separated Ids.
 | term       | String| The text string you want to search for.
 | country    | String| The two-letter country code for the store you want to search.
 | media      | Select| The media type you want to search for. The default is all.
@@ -204,7 +204,7 @@ Look up content by AMG Video ID.
 
 | Field     | Type  | Description
 |-----------|-------|----------
-| amgVideoId| String| AMG Video identire.
+| amgVideoId| List| AMG Video identire.
 | term      | String| The text string you want to search for.
 | country   | String| The two-letter country code for the store you want to search.
 | media     | Select| The media type you want to search for. The default is all.

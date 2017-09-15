@@ -24,8 +24,7 @@ $app->post('/api/iTunes/getContentByAmgVideoId', function ($request, $response) 
 
     $client = $this->httpClient;
     $query_str = "https://itunes.apple.com/lookup";
-
-    
+    $data['amgVideoId'] = is_array($data['amgVideoId']) ? implode(',', $data['amgVideoId']) : $data['amgVideoId'];
 
     $requestParams = \Models\Params::createRequestBody($data, $bodyParams);
     $requestParams['headers'] = ["Content-type"=>"application/json"];
