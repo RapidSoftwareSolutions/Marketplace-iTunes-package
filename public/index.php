@@ -1,34 +1,38 @@
 <?php
-require dirname(__DIR__) . '/vendor/autoload.php';
 
-use Core\Router;
-
-header('Content-type: application/json');
-http_response_code (200);
-define('RAPID_IN', TRUE);
-
-$inPath = trim(str_replace('index.php', '', trim($_SERVER['SCRIPT_NAME'], '\/\\' )), '\/\\');
-if( strlen(trim($inPath)) > 0){
-    define('INDEX_PATH', '/' . $inPath . '/');
-}else{
-    define('INDEX_PATH', '/');
+if (PHP_SAPI == 'cli-server') {
+    // To help the built-in PHP dev server, check if the request was actually for
+    // something which should probably be served as a static file
+    $url  = parse_url($_SERVER['REQUEST_URI']);
+    $file = __DIR__ . $url['path'];
+    if (is_file($file)) {
+        return false;
+    }
 }
-define('APP_PATH', __DIR__);
-define('HTTP_HOST', $_SERVER['HTTP_HOST']);
 
-// Include metadata array
-$settings = include dirname(APP_PATH) . '/src/metadata/vendor.php';
+require __DIR__ . '/../vendor/autoload.php';
 
-if(
-    !isset($settings['package']) ||
-    !isset($settings['blocks']) ||
-    !is_array($settings['blocks']) ||
-    !isset($settings['custom'])
-){
-    throw new Exception('Wrong vendor.php format \'package\', \'blocks\' or \'customBlocksHandlers\' in root is miss');
-}
-$router = new Router($settings['package'], $settings['blocks'], $settings['custom']);
-$router->setup();
-$router->run();
-http_response_code(200);
-exit(200);
+session_start();
+
+// Instantiate the app
+$settings = require __DIR__ . '/../src/settings.php';
+$app = new \Slim\App($settings);
+
+// Register models
+require __DIR__ . '/../src/Models/paginationClass.php';
+require __DIR__ . '/../src/Models/normalizeJson.php';
+require __DIR__ . '/../src/Models/checkRequest.php';
+require __DIR__ . '/../src/Models/Params.php';
+require __DIR__ . '/../src/Models/Metadata.php';
+
+// Set up dependencies
+require __DIR__ . '/../src/dependencies.php';
+
+// Register middleware
+require __DIR__ . '/../src/middleware.php';
+
+// Register routes
+require __DIR__ . '/../src/routes.php';
+
+// Run app
+$app->run();

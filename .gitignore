@@ -1,11 +1,6 @@
-/src/metadata/conf*
+/logs/
 /vendor/
-test/rapid.*
-test/*.json
-test/*.ods
-test/*.ods#
-test/*.php
-test/*.txt
-test/*
-.idea/
-composer.lock
+/test/rapid.*
+/test/*.json
+/src/metadata/metadata_full.json
+/.idea
